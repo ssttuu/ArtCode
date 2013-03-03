@@ -23,7 +23,7 @@ def home(request):
 
 def project(request, projectSlug=None):
     post = Post.objects.filter(slug=projectSlug)
-    return render_to_response('base_project.html', {"project": post }})
+    return render_to_response('base_project.html', {"project": post })
 
 def post(request, postSlug=None):
     if not postSlug:
