@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}Stu Schwartz{% endblock page_title %}
+
+{% block container %}
+    {% for box in boxes %}
+        <div id='0' class='box' style='height:{{ box.height }}%; width:{{ box.width }}%; top:{{ box.startY }}%; left:{{ box.startX }}%;'>
+            <div class='content' style='width:100%; height:100%;{% if box.post %} background:url({{ box.post.images.all.0.get_absolute_url }});'  onclick='location.href="{{ box.post.get_absolute_url }}";{% endif %}' >
+
+                {# {{ box.post.body }} #}
+                {% for image in box.post.images.all %}
+                    {% if forloop.first %}
+                        {% comment %}
+                        <img border="0" src="{{ image.get_absolute_url }}" alt="Pulpit rock" width="100%" >
+                        {% endcomment %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock container %}
+
+
+{% block thumbnail %}
+    <canvas id="myCanvas" width="{{ thumbnail.width }}px" height="{{ thumbnail.height }}px"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        context.beginPath();
+        context.rect(0,0,{{ thumbnail.width }},{{ thumbnail.height }});
+
+        {% for box in boxes %}
+        context.rect({{ box.thumbnail.startX }},{{ box.thumbnail.startY }},{{ box.thumbnail.width }}, {{ box.thumbnail.height }});
+        {% endfor %}
+
+        context.fillStyle = 'black';
+        context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = '#333333';
+        context.stroke();
+
+    </script>
+
+{% endblock thumbnail %}

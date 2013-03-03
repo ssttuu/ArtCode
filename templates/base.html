@@ -1,0 +1,75 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> Stu Schwartz | Computer Scientist</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+    {% block additional_scripts %}
+    {% endblock additional_scripts %}
+</head>
+<html>
+<body>
+
+
+<div id="wrapper">
+	<div id="title_bar">
+        {% block page_title %}
+		stu schwartz
+        {% endblock page_title %}
+	</div>
+	<div id="rectangles">
+
+		<div id="left_menu">
+			<span class="lato_small">
+                {% block side_menu %}
+            		<a class='buttons' href='/'>home</a><br>
+                    <a class='buttons' href='/projects/'>projects</a><br>
+                    <a class='buttons' href='/projects/'>blog</a><br>
+                    <a class='buttons' href='/about/'>about</a><br>
+                {% endblock side_menu %}
+			</span>
+		</div>
+		<div id="right_column">
+			<div id="container">
+                {% block container %}
+                <div id='0' class='box' style='height:100%; width:100%; top:0%; left:0%;'>
+                    <div class='content' style='width:100%; height:100%;'></div>
+                </div>
+                {% endblock container %}
+			</div>
+
+
+
+			<div id="right_menu">
+				<div id="right_data">
+					<span class="lato_small">
+
+						<div id='thumb_container' style='width: 80px; height: 60px;'>
+                            {% block thumbnail %}
+                                <div id='0' class='thumb_box' style='width:100%; height:100%; top:0%; left:0%; background-color: #212121;'></div>
+                            {% endblock thumbnail %}
+                        </div>
+                        <!--<br>selected<br>-->
+						<span id="num_chosen" class="lato_large">
+							&nbsp;{{ rectangle.selectedTotal }}
+							<br>
+						</span>
+						<!--times-->
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="more_section">
+				extras
+		</div>
+
+		<div id="bottom_section">
+			<div id="bottom_menu">
+			</div>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>

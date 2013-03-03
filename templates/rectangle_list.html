@@ -1,0 +1,13 @@
+{# {% extends "base.html" %} #}
+
+{% block content %}
+    <ul>
+        {% for rectangle in object_list %}
+            <li>{{ rectangle.totalBoxes }},{{ rectangle.sizeX }},{{ rectangle.sizeY }},
+                {% for box in rectangle.boxes.iterator %}
+                    {{ box }},
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
